@@ -13,7 +13,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    
+    <!-- chart JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+
+
   </head>
 
 
@@ -23,10 +26,11 @@
     <a href="#fr" class="region-reload">Europe-FR</a>
     <a href="#ge" class="region-reload">Europe-GE</a>
 
-    <div class="container">
+    <div class="container-fluid">
       <h1>Cost Comparison</h1>
       <p id="siteDescription">Online ROI CleanSpace vs Disposable Mask Calculator</p>
       <!-- Top table -->
+      <h3>CleanSpace System - Health and Life Science</h3>
       <div class="row">
         <!-- Health left table -->
         <div class="col-md-6">
@@ -49,10 +53,15 @@
               <th id="otherHeader">Other</th>
               <th id="otherCostUnit">$</th>
 
+              <!-- fp: filter particulate -->
+              <tr>
+                <td id="fpText">Filter partculate</td>
+                <td><input id="fpValue" type="number" value="20"></td>
+              </tr>
               <!-- fpm: filter per month -->
               <tr>
                 <td id="fpmText">Filter used per month</td>
-                <td><input id="fpmValue" type="number" value="20"></td>
+                <td><input id="fpmValue" type="number" value="2"></td>
               </tr>
               <!-- acm: annual cost of maintenance -->
               <tr>
@@ -65,32 +74,136 @@
         </div>
       </div>
 
-
-      <h1>Disposable Mask</h1>
       <!-- Bottom Table -->
-      <table width="100%">
+      <h3>Disposable Mask</h3>
+      <table width="100%" class="table">
         <tbody>
           <tr>
             <td>Number of masks used per month</td>
-            <td><input id="disposableNumber" class="disposableCalculation" type="number" value="30"></td>
+            <td><input id="disposableNumber" class="disposableCalculation" type="number" value="40"></td>
           </tr>
 
           <tr>
             <td>Price per unit</td>
-            <td><input id="disposablePrice" class="disposableCalculation" type="number" value="30"></td>
+            <td><input id="disposablePrice" class="disposableCalculation" type="number" value="2"></td>
           </tr>
 
           <tr>
             <td>Monthly cost</td>
-            <td id="disposableTotalCost">105.00</td>
+            <td id="disposableTotalCost"></td>
           </tr>
         </tbody>
       </table>
-
       
+      <!-- Calculate button -->
       <div class="row">
         <div class="col-md-12">
             <button type="button" class="btn btn-outline-dark btn-lg center" onclick="calculateFunction()">Calculate</button>
+        </div>
+      </div>
+
+
+      <h3>Savings</h3>
+      <!-- Result -->
+      <div class="row">
+        <!-- Result calculation -->
+        <div class="col-md-6">
+          <table width="100%" class="table">
+            <tbody>
+              <tr>
+                <th>Units</th>
+                <th>Total Cost Over 1 Year</th>
+                <th>Total Cost Over 3 Years</th>
+                <th>%</th>
+              </tr>
+
+              <!-- Disposable Mask -->
+              <tr>
+                <td>Disposable Masks</td>
+                <td id="cost_disposable1y">0</td>
+                <td id="cost_disposable3y">0</td>
+                <td id="disposablePercentage">0</td>
+              </tr>
+
+              <!-- CleanSpace Halo + Half Mask -->
+              <tr>
+                <td>CleanSpace Halo + Half mask</td>
+                <td id="cost_halo1y">0</td>
+                <td id="cost_halo3y">0</td>
+                <td id="haloPercentage">0</td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Plotted diagram -->
+        <div class="col-md-6">
+          <canvas id="canvas" width="400" height="400">
+          <script>
+            
+            // var labels = ['Disposable Mask', 'Halo-half Mask'];
+            var color = Chart.helpers.color;
+            var barChartData = {
+              labels: ['1 year', '3 years'],
+              datasets: [
+                {
+                  label: 'Disposable Mask',
+                  backgroundColor: 'rgb(255, 99, 132, 0.5)',
+                  borderColor: 'rgb(255, 99, 132)',
+                  borderWidth: 1,
+                  data: [0, 0]
+                },
+                {
+                  label: 'Halo-half Mask',
+                  backgroundColor: 'rgb(54, 162, 235, 0.5)',
+                  borderColor: 'rgb(54, 162, 235)',
+                  borderWidth: 1,
+                  data: [0, 0]
+              }
+              ]
+            }
+
+            var ctx = document.getElementById('canvas').getContext('2d');
+            var myChart;
+
+            $(document).ready(function() {
+              console.log('ready to plot a diagram');
+              
+              // input change???
+
+              myChart = new Chart(ctx, {
+                type: 'bar',
+                data: barChartData,
+                options: {
+                  scales: {
+                    xAxes: [{
+                      // stacked: true,
+                    }],
+                    yAxes: [{
+                      // stacked: true,
+                      ticks: {
+                        beginAtZero: true
+                      }
+                    }]
+                  },
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  legend: {
+                    position: 'top',
+                  },
+                  title: {
+                    display: true,
+                    text: 'Chart.js Bar Chart'
+                  }
+                }
+              });
+              
+            });
+            
+            
+
+          </script>
         </div>
       </div>
 
@@ -131,7 +244,7 @@
             setHealthTableLanguage("fr")
             break;
           case "#ge":
-            setHealthTableLanguage("ge")
+            // setHealthTableLanguage("ge")
             break;
         }
       }
@@ -167,6 +280,9 @@
 
     <!-- Calculation script -->
     <script>
+      const params = new URLSearchParams(window.location.search)
+      console.log(params.has("year"))
+
       // re-calculate disposable mask price when input has been changed
       $(".disposableCalculation").change( function () {
         calculateDisposable();
@@ -177,11 +293,47 @@
         var dispMaskPrice = parseFloat($('#disposablePrice').val());
         var dispMonthlyCost = dispMaskNumber * dispMaskPrice;
         $("#disposableTotalCost").html(dispMonthlyCost);
-        return dispMonthlyCost;
+        return {cost1y: dispMonthlyCost*12, cost3y:dispMonthlyCost*36}
+        // return dispMonthlyCost;
+      }
+
+      // CleanSpace mask calculation function
+      function calculateCleanSpace() {
+        var haloHalfMask = parseFloat($("#model1Value").val());
+        var fpValue = parseFloat($("#fpValue").val());
+        var fpmValue = parseFloat($("#fpmValue").val());
+        var acmValue = parseFloat($("#acmValue").val());
+        
+        var filter_1y = (fpValue * fpmValue * 12) + acmValue;
+        var filter_3y = filter_1y * 3;
+        var haloHalfMask_1y = haloHalfMask + filter_1y
+        var haloHalfMask_3y = haloHalfMask + filter_3y;
+        return {cost1y: haloHalfMask_1y, cost3y: haloHalfMask_3y}
       }
 
       function calculateFunction() {
-        var dispMonthlyCost = calculateDisposable();
+        var dispCost = calculateDisposable();
+        var cleanSpaceCost = calculateCleanSpace();
+        var diffPercen = (cleanSpaceCost["cost3y"] - dispCost["cost3y"])/dispCost["cost3y"];
+        var formattedPercen = Math.round(diffPercen * 100).toFixed();
+
+        $("#cost_halo1y").html(cleanSpaceCost["cost1y"]);
+        $("#cost_halo3y").html(cleanSpaceCost["cost3y"]);
+        $("#cost_disposable1y").html(dispCost["cost1y"]);
+        $("#cost_disposable3y").html(dispCost["cost3y"]);
+        $("#haloPercentage").html(formattedPercen);
+
+        // Disposable chart value
+        myChart.data.datasets[0].data = [
+          dispCost["cost1y"],
+          dispCost["cost3y"]
+        ]
+        // Halo-half chart value
+        myChart.data.datasets[1].data = [
+          cleanSpaceCost["cost1y"], 
+          cleanSpaceCost["cost3y"]
+        ]
+        myChart.update(); 
       }
 
     </script>
