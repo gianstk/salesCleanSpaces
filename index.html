@@ -38,18 +38,18 @@
       <a class="navbar-brand" href="#">NavBar name</a>
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item" id="nav-eu-en">
+          <li class="nav-item active">
             <a class="nav-link region-reload" href="#en">
               Europe-EN
               <span class="sr-only">(current</span>
             </a>
           </li>
-          <li class="nav-item" id="nav-eu-fr">
+          <li class="nav-item">
             <a class="nav-link region-reload" href="#fr">
               Europe-FR
             </a>
           </li>
-          <li class="nav-item" id="nav-eu-ge">
+          <li class="nav-item">
             <a class="nav-link region-reload" href="#ge">
               Europe-GE
             </a>
@@ -275,7 +275,7 @@
           acm: {text: "Coût annuel de maintenance", value: 0}
         }
       }
-      
+
       // define language
       if (window.location.hash) {
         switch(window.location.hash) {
@@ -317,6 +317,12 @@
         $(".region-reload").click(function () {
           setTimeout(function () { location.reload(true); }, 50);
         });
+        
+        var nav_lang = ["#en", "#fr", "#ge"];
+        $(".nav-item").each(function(i) {
+          if (window.location.hash == nav_lang[i]) $(this).addClass('active');
+          else if (this.className.includes('active')) $(this).removeClass('active');
+        })
       });
     </script>
 
@@ -381,8 +387,6 @@
       }
 
     </script>
-
-
 
   </body>
 
