@@ -3,8 +3,6 @@
   <head>
     <meta charset="UTF-8">
     <title>CleanSpace Halo ROI calculator</title>
-
-
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
@@ -16,8 +14,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <!-- chart JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-    
-
+    <!-- Additional styles -->
     <style>
       * {
         font-family: 'Raleway', sans-serif;
@@ -31,13 +28,9 @@
         border-left:0px;  
       }
     </style>
-
   </head>
 
-
-
   <body>
-
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
       <a class="navbar-brand" href="#">Clean Space</a>
       <div class="collapse navbar-collapse">
@@ -179,8 +172,6 @@
         <div class="col-md-6">
           <canvas id="canvas" width="400" height="400">
           <script>
-            
-            // var labels = ['Disposable Mask', 'Halo-half Mask'];
             var color = Chart.helpers.color;
             var barChartData = {
               labels: ['Disposable Masks', 'Halo-Half Mask'],
@@ -201,44 +192,8 @@
               }
               ]
             }
-
             var ctx = document.getElementById('canvas').getContext('2d');
             var myChart;
-
-            // $(document).ready(function() {
-              
-            //   // input change???
-            //   myChart = new Chart(ctx, {
-            //     type: 'bar',
-            //     data: barChartData,
-            //     options: {
-            //       scales: {
-            //         xAxes: [{
-            //           stacked: true,
-            //         }],
-            //         yAxes: [{
-            //           stacked: true,
-            //           ticks: {
-            //             beginAtZero: true
-            //           }
-            //         }]
-            //       },
-            //       responsive: true,
-            //       maintainAspectRatio: false,
-            //       legend: {
-            //         position: 'top',
-            //       },
-            //       title: {
-            //         display: true,
-            //         text: 'Overall Cost of 3 years'
-            //       }
-            //     }
-            //   });
-              
-            // });
-            
-            
-
           </script>
         </div>
       </div>
@@ -279,10 +234,6 @@
           acm: {text: "Annual cost of maintenance", value: 0}
         }
       }
-      
-
-      
-      
 
       $(document).ready(function () {
         // set up myChart
@@ -346,18 +297,14 @@
         // re-calculate disposable mask price when input has been changed
         $(".disposableCalculation").change( function () {
           calculateDisposable();
-          calculateFunction();
+          // calculateFunction();
         })
 
         // re-calculate when there is a change
         $(".haloCalculation").change( function () {
-          calculateDisposable();
-          calculateFunction();
+          // calculateDisposable();
+          // calculateFunction();
         })
-
-
-
-        
       });
     
 
@@ -470,11 +417,5 @@
     </script>
 
   </body>
-
-  <script>
-
-  </script>
-
-
 
 </html>
