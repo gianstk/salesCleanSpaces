@@ -2,12 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Test Site</title>
+    <title>CleanSpace Halo ROI calculator</title>
 
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- Popper JS -->
@@ -16,8 +16,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <!-- chart JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    
 
     <style>
+      * {
+        font-family: 'Raleway', sans-serif;
+      }
       .center-button {
         text-align: center;
       }
@@ -35,33 +39,28 @@
   <body>
 
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
-      <a class="navbar-brand" href="#">NavBar name</a>
+      <a class="navbar-brand" href="#">Clean Space</a>
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <a class="nav-link region-reload" href="#en">
-              Europe-EN
+              English
               <span class="sr-only">(current</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link region-reload" href="#fr">
-              Europe-FR
+              France
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link region-reload" href="#ge">
-              Europe-GE
+              German
             </a>
           </li>
         </ul>
       </div>
     </nav>
-
-
-    <!-- <a href="#en" class="region-reload">Europe-EN</a> -->
-    <!-- <a href="#fr" class="region-reload">Europe-FR</a>
-    <a href="#ge" class="region-reload">Europe-GE</a> -->
 
     <div class="container-fluid">
       <h1>Cost Comparison</h1>
@@ -79,7 +78,7 @@
 
               <tr>
                 <td id="model1Text">CleanSpace Halo + Half mask</td>
-                <td><input id="model1Value" value="905" type="number"></td>
+                <td><input id="model1Value" class="haloCalculation" value="905" type="number"></td>
               </tr>
             </tbody>
           </table>
@@ -94,17 +93,17 @@
               <!-- fp: filter particulate -->
               <tr>
                 <td id="fpText">Filter particulate</td>
-                <td><input id="fpValue" type="number" value="20"></td>
+                <td><input id="fpValue" class="haloCalculation" type="number" value="20"></td>
               </tr>
               <!-- fpm: filter per month -->
               <tr>
                 <td id="fpmText">Filter used per month</td>
-                <td><input id="fpmValue" type="number" value="2"></td>
+                <td><input id="fpmValue" class="haloCalculation" type="number" value="2"></td>
               </tr>
               <!-- acm: annual cost of maintenance -->
               <tr>
                 <td id="acmText">Annual cost of maintenance</td>
-                <td><input id="acmValue" type="number" value="0"></td>
+                <td><input id="acmValue" class="haloCalculation" type="number" value="0"></td>
               </tr>
 
             </tbody>
@@ -206,39 +205,37 @@
             var ctx = document.getElementById('canvas').getContext('2d');
             var myChart;
 
-            $(document).ready(function() {
-              console.log('ready to plot a diagram');
+            // $(document).ready(function() {
               
-              // input change???
-
-              myChart = new Chart(ctx, {
-                type: 'bar',
-                data: barChartData,
-                options: {
-                  scales: {
-                    xAxes: [{
-                      stacked: true,
-                    }],
-                    yAxes: [{
-                      stacked: true,
-                      ticks: {
-                        beginAtZero: true
-                      }
-                    }]
-                  },
-                  responsive: true,
-                  maintainAspectRatio: false,
-                  legend: {
-                    position: 'top',
-                  },
-                  title: {
-                    display: true,
-                    text: 'Overall Cost of 3 years'
-                  }
-                }
-              });
+            //   // input change???
+            //   myChart = new Chart(ctx, {
+            //     type: 'bar',
+            //     data: barChartData,
+            //     options: {
+            //       scales: {
+            //         xAxes: [{
+            //           stacked: true,
+            //         }],
+            //         yAxes: [{
+            //           stacked: true,
+            //           ticks: {
+            //             beginAtZero: true
+            //           }
+            //         }]
+            //       },
+            //       responsive: true,
+            //       maintainAspectRatio: false,
+            //       legend: {
+            //         position: 'top',
+            //       },
+            //       title: {
+            //         display: true,
+            //         text: 'Overall Cost of 3 years'
+            //       }
+            //     }
+            //   });
               
-            });
+            // });
             
             
 
@@ -246,11 +243,9 @@
         </div>
       </div>
 
-
-      
-
-
     </div>
+
+  
 
     <!-- Changing language script -->
     <script>
@@ -271,26 +266,104 @@
           otherHeader: "Other",
           costUnit: "€",
           model1: {text: "CleanSpace Halo + demi-masque", value: 750},
-          fpm: {text: "Filtre P3 Halo", value: 20},
+          fpm: {text: "Filtre P3 Halo", value: 2},
           acm: {text: "Coût annuel de maintenance", value: 0}
-        }
-      }
-
-      // define language
-      if (window.location.hash) {
-        switch(window.location.hash) {
-          case "#en":
-            setHealthTableLanguage("en")
-            break;
-          case "#fr":
-            setHealthTableLanguage("fr")
-            break;
-          case "#ge":
-            // setHealthTableLanguage("ge")
-            break;
+        },
+        ge: {
+          siteDescription: "Online ROI CleanSpace vs Disposable Mask Calculator",
+          modelHeader: "Model",
+          otherHeader: "Other",
+          costUnit: "£",
+          model1: {text: "CleanSpace Halo + Half mask", value: 905},
+          fpm: {text: "Filter used per month", value: 2},
+          acm: {text: "Annual cost of maintenance", value: 0}
         }
       }
       
+
+      
+      
+
+      $(document).ready(function () {
+        // set up myChart
+        myChart = new Chart(ctx, {
+          type: 'bar',
+          data: barChartData,
+          options: {
+            scales: {
+              xAxes: [{
+                stacked: true,
+              }],
+              yAxes: [{
+                stacked: true,
+                ticks: {
+                  beginAtZero: true
+                }
+              }]
+            },
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+              position: 'top',
+            },
+            title: {
+              display: true,
+              text: 'Overall Cost of 3 years'
+            }
+          }
+        });
+
+        // dynamic active navigation bar
+        var nav_lang = ["#en", "#fr", "#ge"];
+        $(".nav-item").each(function(i) {
+          if (window.location.hash == nav_lang[i]) $(this).addClass('active');
+          else if (this.className.includes('active')) $(this).removeClass('active');
+        })
+
+        // define language
+        if (window.location.hash) {
+          switch(window.location.hash) {
+            case "#en":
+              setHealthTableLanguage("en")
+              break;
+            case "#fr":
+              setHealthTableLanguage("fr")
+              break;
+            case "#ge":
+              setHealthTableLanguage("ge")
+              break;
+          }
+        }
+
+        // use passed parameters
+        paramPassing();
+
+        // reload page after changing language
+        $(".region-reload").click(function () {
+          setTimeout(function () { location.reload(true); }, 50);
+        });
+        
+        // re-calculate disposable mask price when input has been changed
+        $(".disposableCalculation").change( function () {
+          calculateDisposable();
+          calculateFunction();
+        })
+
+        // re-calculate when there is a change
+        $(".haloCalculation").change( function () {
+          calculateDisposable();
+          calculateFunction();
+        })
+
+
+
+        
+      });
+    
+
+      
+
+      // function for changing language of a whole site
       function setHealthTableLanguage(lang) {
         // site description
         siteDescription.innerHTML = healthTableLang[lang]["siteDescription"];
@@ -306,35 +379,12 @@
         
         // fpm
         fpmText.textContent = healthTableLang[lang]["fpm"]["text"];
-        fpmValue.textContent = healthTableLang[lang]["fpm"]["value"];
+        fpmValue.value = healthTableLang[lang]["fpm"]["value"];
         // acm
         acmText.textContent = healthTableLang[lang]["acm"]["text"];
-        acmValue.textContent = healthTableLang[lang]["acm"]["value"];
+        acmValue.value = healthTableLang[lang]["acm"]["value"];
       }
 
-      // reload page
-      $(document).ready(function () {
-        $(".region-reload").click(function () {
-          setTimeout(function () { location.reload(true); }, 50);
-        });
-        
-        var nav_lang = ["#en", "#fr", "#ge"];
-        $(".nav-item").each(function(i) {
-          if (window.location.hash == nav_lang[i]) $(this).addClass('active');
-          else if (this.className.includes('active')) $(this).removeClass('active');
-        })
-      });
-    </script>
-
-    <!-- Calculation script -->
-    <script>
-      const params = new URLSearchParams(window.location.search)
-      console.log(params.has("year"))
-
-      // re-calculate disposable mask price when input has been changed
-      $(".disposableCalculation").change( function () {
-        calculateDisposable();
-      })
       // function for calculating disposable mask price
       function calculateDisposable() {
         var dispMaskNumber = parseFloat($("#disposableNumber").val());
@@ -342,7 +392,6 @@
         var dispMonthlyCost = dispMaskNumber * dispMaskPrice;
         $("#disposableTotalCost").html(dispMonthlyCost);
         return {cost1y: dispMonthlyCost*12, cost3y:dispMonthlyCost*36}
-        // return dispMonthlyCost;
       }
 
       // CleanSpace mask calculation function
@@ -359,6 +408,7 @@
         return {cost1y: haloHalfMask_1y, cost3y: haloHalfMask_3y}
       }
 
+      // main calculating function
       function calculateFunction() {
         var dispCost = calculateDisposable();
         var cleanSpaceCost = calculateCleanSpace();
@@ -385,6 +435,37 @@
         ]
         myChart.update(); 
       }
+
+      // parameters passing function
+      function paramPassing() {
+        const params = new URLSearchParams(window.location.search);
+        // Halo price
+        if (params.has("haloPrice")) {
+          $("#model1Value").val(params.get("haloPrice"));
+        }
+        // Filter participate
+        if (params.has("haloFp")) {
+          $("#fpValue").val(params.get("haloFp"));
+        }
+        // Filters used per month
+        if (params.has("haloFpm")) {
+          $("#fpmValue").val(params.get("haloFpm"));
+        }
+        // Annual cost of maintenance
+        if (params.has("haloAcm")) {
+          $("#acmValue").val(params.get("haloAcm"));
+        }
+        // Number of disposable masks used per month
+        if (params.has("dispMpm")) {
+          $("#disposableNumber").val(params.get("dispMpm"));
+        }
+        // Disposable price per unit
+        if (params.has("dispPrice")) {
+          $("#disposablePrice").val(params.get("dispPrice"));
+        }
+      }
+
+      
 
     </script>
 
