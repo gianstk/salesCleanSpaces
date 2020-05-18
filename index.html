@@ -7,6 +7,7 @@
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- Popper JS -->
@@ -16,27 +17,64 @@
     <!-- chart JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
+    <style>
+      .center-button {
+        text-align: center;
+      }
+      .table-curved {
+        border: solid #ccc 1px;
+        border-radius: 6px;
+        border-left:0px;  
+      }
+    </style>
 
   </head>
 
 
 
   <body>
-    <a href="#en" class="region-reload">Europe-EN</a>
-    <a href="#fr" class="region-reload">Europe-FR</a>
-    <a href="#ge" class="region-reload">Europe-GE</a>
+
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+      <a class="navbar-brand" href="#">NavBar name</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item" id="nav-eu-en">
+            <a class="nav-link region-reload" href="#en">
+              Europe-EN
+              <span class="sr-only">(current</span>
+            </a>
+          </li>
+          <li class="nav-item" id="nav-eu-fr">
+            <a class="nav-link region-reload" href="#fr">
+              Europe-FR
+            </a>
+          </li>
+          <li class="nav-item" id="nav-eu-ge">
+            <a class="nav-link region-reload" href="#ge">
+              Europe-GE
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+
+    <!-- <a href="#en" class="region-reload">Europe-EN</a> -->
+    <!-- <a href="#fr" class="region-reload">Europe-FR</a>
+    <a href="#ge" class="region-reload">Europe-GE</a> -->
 
     <div class="container-fluid">
       <h1>Cost Comparison</h1>
       <p id="siteDescription">Online ROI CleanSpace vs Disposable Mask Calculator</p>
+      
       <!-- Top table -->
       <h3>CleanSpace System - Health and Life Science</h3>
       <div class="row">
         <!-- Health left table -->
         <div class="col-md-6">
-          <table id="model-table" class="table" width="100%">
+          <table id="model-table" class="table table-success" width="100%">
             <tbody>
-              <th id="modelHeader">Models</th>
+              <th id="modelHeader">Model</th>
               <th id="modelCostUnit">$</th>
 
               <tr>
@@ -48,14 +86,14 @@
         </div>
         <!-- Health right table -->
         <div class="col-md-6">
-          <table id="filter-table" class="table" width="100%">
+          <table id="filter-table" class="table table-success" width="100%">
             <tbody>
               <th id="otherHeader">Other</th>
               <th id="otherCostUnit">$</th>
 
               <!-- fp: filter particulate -->
               <tr>
-                <td id="fpText">Filter partculate</td>
+                <td id="fpText">Filter particulate</td>
                 <td><input id="fpValue" type="number" value="20"></td>
               </tr>
               <!-- fpm: filter per month -->
@@ -75,8 +113,8 @@
       </div>
 
       <!-- Bottom Table -->
-      <h3>Disposable Mask</h3>
-      <table width="100%" class="table">
+      <h3>Disposable Mask</h3>      
+      <table width="100%" class="table table-success">
         <tbody>
           <tr>
             <td>Number of masks used per month</td>
@@ -98,17 +136,18 @@
       <!-- Calculate button -->
       <div class="row">
         <div class="col-md-12">
-            <button type="button" class="btn btn-outline-dark btn-lg center" onclick="calculateFunction()">Calculate</button>
+          <div class="center-button">
+            <button type="button" class="btn btn-primary btn-lg btn-success center" onclick="calculateFunction()">Calculate</button>
+          </div>
         </div>
       </div>
-
 
       <h3>Savings</h3>
       <!-- Result -->
       <div class="row">
         <!-- Result calculation -->
         <div class="col-md-6">
-          <table width="100%" class="table">
+          <table width="100%" class="table table-success">
             <tbody>
               <tr>
                 <th>Units</th>
@@ -145,19 +184,19 @@
             // var labels = ['Disposable Mask', 'Halo-half Mask'];
             var color = Chart.helpers.color;
             var barChartData = {
-              labels: ['1 year', '3 years'],
+              labels: ['Disposable Masks', 'Halo-Half Mask'],
               datasets: [
                 {
                   label: 'Disposable Mask',
-                  backgroundColor: 'rgb(255, 99, 132, 0.5)',
+                  backgroundColor: 'rgb(255, 0, 0, 0.6)',
                   borderColor: 'rgb(255, 99, 132)',
                   borderWidth: 1,
                   data: [0, 0]
                 },
                 {
                   label: 'Halo-half Mask',
-                  backgroundColor: 'rgb(54, 162, 235, 0.5)',
-                  borderColor: 'rgb(54, 162, 235)',
+                  backgroundColor: 'rgb(0, 204, 0, 0.6)',
+                  borderColor: 'rgb(0, 204, 0)',
                   borderWidth: 1,
                   data: [0, 0]
               }
@@ -178,10 +217,10 @@
                 options: {
                   scales: {
                     xAxes: [{
-                      // stacked: true,
+                      stacked: true,
                     }],
                     yAxes: [{
-                      // stacked: true,
+                      stacked: true,
                       ticks: {
                         beginAtZero: true
                       }
@@ -194,7 +233,7 @@
                   },
                   title: {
                     display: true,
-                    text: 'Chart.js Bar Chart'
+                    text: 'Overall Cost of 3 years'
                   }
                 }
               });
@@ -206,6 +245,9 @@
           </script>
         </div>
       </div>
+
+
+      
 
 
     </div>
@@ -233,7 +275,7 @@
           acm: {text: "Coût annuel de maintenance", value: 0}
         }
       }
-
+      
       // define language
       if (window.location.hash) {
         switch(window.location.hash) {
@@ -325,12 +367,14 @@
 
         // Disposable chart value
         myChart.data.datasets[0].data = [
-          dispCost["cost1y"],
-          dispCost["cost3y"]
+          dispCost["cost3y"],
+          0
+          
         ]
         // Halo-half chart value
         myChart.data.datasets[1].data = [
-          cleanSpaceCost["cost1y"], 
+          // cleanSpaceCost["cost1y"], 
+          0,
           cleanSpaceCost["cost3y"]
         ]
         myChart.update(); 
