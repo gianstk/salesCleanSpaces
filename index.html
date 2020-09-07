@@ -51,6 +51,11 @@
               German
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link region-reload" href="#sp">
+              Spanish
+            </a>
+          </li>
         </ul>
       </div>
     </nav>
@@ -60,7 +65,7 @@
       <p id="siteDescription">Online ROI CleanSpace vs Disposable Mask Calculator</p>
       
       <!-- Top table -->
-      <h3>CleanSpace System - Health and Life Science</h3>
+      <h3 id="tableName1">CleanSpace System - Health and Life Science</h3>
       <div class="row">
         <!-- Health left table -->
         <div class="col-md-6">
@@ -105,21 +110,21 @@
       </div>
 
       <!-- Bottom Table -->
-      <h3>Disposable Mask</h3>      
+      <h3 id="tableName2">Disposable Mask</h3>      
       <table width="100%" class="table table-success">
         <tbody>
           <tr>
-            <td>Number of masks used per month</td>
+            <td id="table2row0col0">Number of masks used per month</td>
             <td><input id="disposableNumber" class="disposableCalculation" type="number" value="40"></td>
           </tr>
 
           <tr>
-            <td>Price per unit ($/€/£)</td>
+            <td id="table2row1col0">Price per unit ($/€/£)</td>
             <td><input id="disposablePrice" class="disposableCalculation" type="number" value="2"></td>
           </tr>
 
           <tr>
-            <td>Monthly cost ($/€/£)</td>
+            <td id="table2row2col0">Monthly cost ($/€/£)</td>
             <td id="disposableTotalCost"></td>
           </tr>
         </tbody>
@@ -134,7 +139,7 @@
         </div>
       </div>
 
-      <h3>Savings</h3>
+      <h3 id="tableName3">Savings</h3>
       <!-- Result -->
       <div class="row">
         <!-- Result calculation -->
@@ -142,15 +147,15 @@
           <table width="100%" class="table table-success">
             <tbody>
               <tr>
-                <th>Units</th>
-                <th>Total Cost Over 1 Year</th>
-                <th>Total Cost Over 3 Years</th>
-                <th>%</th>
+                <th id="table3colHeader0">Units</th>
+                <th id="table3colHeader1">Total Cost Over 1 Year</th>
+                <th id="table3colHeader2">Total Cost Over 3 Years</th>
+                <th id="table3colHeader3">%</th>
               </tr>
 
               <!-- Disposable Mask -->
               <tr>
-                <td>Disposable Masks</td>
+                <td id="table3row0col0">Disposable Masks</td>
                 <td id="cost_disposable1y">0</td>
                 <td id="cost_disposable3y">0</td>
                 <td id="disposablePercentage">0</td>
@@ -158,7 +163,7 @@
 
               <!-- CleanSpace Halo + Half Mask -->
               <tr>
-                <td>CleanSpace Halo + Half mask</td>
+                <td id="table3row1col0">CleanSpace Halo + Half mask</td>
                 <td id="cost_halo1y">0</td>
                 <td id="cost_halo3y">0</td>
                 <td id="haloPercentage">0</td>
@@ -208,30 +213,163 @@
       var healthTableLang = {
         en: {
           siteDescription: "Online ROI CleanSpace vs Disposable Mask Calculator",
-          modelHeader: "Model",
-          otherHeader: "Other",
-          costUnit: "$/€/£",
-          model1: {text: "CleanSpace Halo + Half mask", value: 905},
-          fpm: {text: "Filter used per month", value: 2},
-          acm: {text: "Annual cost of maintenance ($/€/£)", value: 0}
+          table1: {
+            tableName: "CleanSpace Halo System - Health and Life Science",
+            colHeader: {
+              0: "Model",
+              1: "$/€/£",
+              2: "Other",
+              3: "$/€/£"
+            },
+            row: {
+              0: {text: "CleanSpace Halo + Half mask", value: 905},
+              1: {text: "Filter particulate RRP ($/€/£)", value: 20},
+              2: {text: "Filter used per month", value: 2},
+              3: {text: "Annual cost of maintenance ($/€/£)", value: 0}
+            }
+          },
+          table2: {
+            tableName: "Disposable Mask",
+            colHeader: {},
+            row: {
+              0: {text: "Number of masks used per month", value: 40},
+              1: {text: "Price per unit ($/€/£)", value: 2},
+              2: {text: "Monthly cost ($/€/£)"}
+            }
+          },
+          table3: {
+            tableName: "Savings",
+            colHeader: {
+              0: "Units",
+              1: "Total Cost Over 1 Year",
+              2: "Total Cost Over 3 Years",
+              3: "%"
+            },
+            row: {
+              0: {text: "Disposable Masks"},
+              1: {text: "CleanSpace Halo + Half mask"}
+            }
+          }
         },
         fr: {
           siteDescription: "COMPARATIF DE COÛT D'UTILISATION CLEANSPACE / MASQUE PAPIER FFP3",
-          modelHeader: "Model",
-          otherHeader: "Other",
-          costUnit: "€",
-          model1: {text: "CleanSpace Halo + demi-masque", value: 750},
-          fpm: {text: "Filtre P3 Halo", value: 2},
-          acm: {text: "Coût annuel de maintenance (€)", value: 0}
+          table1: {
+            tableName: "CleanSpace Halo System - Health and Life Science",
+            colHeader: {
+              0: "Model",
+              1: "$/€/£",
+              2: "Other",
+              3: "$/€/£"
+            },
+            row: {
+              0: {text: "CleanSpace Halo + demi-masque", value: 750},
+              1: {text: "Filtre P3 Halo", value: 20},
+              2: {text: "Filter used per month", value: 2},
+              3: {text: "Coût annuel de maintenance (€)", value: 0}
+            }
+          },
+          table2: {
+            tableName: "Disposable Mask",
+            colHeader: {},
+            row: {
+              0: {text: "Nombre de masque utilisés par mois", value: 40},
+              1: {text: "Prix du masque", value: 2},
+              2: {text: "Coût utlisation masque papier"}
+            }
+          },
+          table3: {
+            tableName: "Savings",
+            colHeader: {
+              0: "Unités	",
+              1: "Résultat sur 1 ans/ opérateur",
+              2: "Résultat sur 3 ans/ opérateur",
+              3: "%"
+            },
+            row: {
+              0: {text: "Disposable Masks"},
+              1: {text: "Cleanspace Halo + Demi-masque"}
+            }
+          }
         },
         ge: {
           siteDescription: "Online ROI CleanSpace vs Disposable Mask Calculator",
-          modelHeader: "Model",
-          otherHeader: "Other",
-          costUnit: "€",
-          model1: {text: "CleanSpace Halo + Half mask", value: 905},
-          fpm: {text: "Filter used per month", value: 2},
-          acm: {text: "Annual cost of maintenance ($/€/£)", value: 0}
+          table1: {
+            tableName: "CleanSpace Halo System - Health and Life Science",
+            colHeader: {
+              0: "Modelo",
+              1: "$/€/£",
+              2: "Other",
+              3: "$/€/£"
+            },
+            row: {
+              0: {text: "CleanSpace Halo + Half mask", value: 905},
+              1: {text: "Filter particulate RRP ($/€/£)", value: 20},
+              2: {text: "Filter used per month", value: 2},
+              3: {text: "Annual cost of maintenance ($/€/£)", value: 0}
+            }
+          },
+          table2: {
+            tableName: "Disposable Mask",
+            colHeader: {},
+            row: {
+              0: {text: "Number of masks used per month", value: 40},
+              1: {text: "Price per unit ($/€/£)", value: 2},
+              2: {text: "Monthly cost ($/€/£)"}
+            }
+          },
+          table3: {
+            tableName: "Savings",
+            colHeader: {
+              0: "Units",
+              1: "Total Cost Over 1 Year",
+              2: "Total Cost Over 3 Years",
+              3: "%"
+            },
+            row: {
+              0: {text: "Disposable Masks"},
+              1: {text: "CleanSpace Halo + Half mask"}
+            }
+          }
+        },
+        sp: {
+          siteDescription: "Calculadora en Linea : Rendimiento sobre la inversion de CleanSpace Halo Contra Mascarilla desechable",
+          table1: {
+            tableName: "Sistema CleanSpace",
+            colHeader: {
+              0: "Modelo",
+              1: "MX Peso",
+              2: "Otro",
+              3: "MX Peso"
+            },
+            row: {
+              0: {text: "CleanSpace Halo + media mascara", value: 905},
+              1: {text: "Precio del filtro (MX Peso)", value: 20},
+              2: {text: "Numero de filtros usados al mes", value: 2},
+              3: {text: "Costo anual de mantenimiento (MX Peso)", value: 0}
+            }
+          },
+          table2: {
+            tableName: "Mascarillas desechables",
+            colHeader: {},
+            row: {
+              0: {text: "Numero de mascaras usadas al mes", value: 40},
+              1: {text: "Precio por unidad (MX Peso)", value: 2},
+              2: {text: "Precio total mensual (MX Peso)"},
+            }
+          },
+          table3: {
+            tableName: "Ahorros",
+            colHeader: {
+              0: "Unidades",
+              1: "Costo total sobre un ano",
+              2: "Cost total sobre 3 anos",
+              3: "%"
+            },
+            row: {
+              0: {text: "Mascaras desechables"},
+              1: {text: "CleanSpace Halo + media mascara"}
+            }
+          }
         }
       }
 
@@ -283,6 +421,9 @@
             case "#ge":
               setHealthTableLanguage("ge")
               break;
+            case "#sp":
+              setHealthTableLanguage("sp")
+              break;
           }
         }
 
@@ -312,24 +453,43 @@
 
       // function for changing language of a whole site
       function setHealthTableLanguage(lang) {
+
+        
+        tableName1.innerHTML = healthTableLang[lang]["tableName1"];
+        // tableName1.innerHTML = "ASLDKJASLDKJA"
         // site description
         siteDescription.innerHTML = healthTableLang[lang]["siteDescription"];
 
         // header & cost unit
-        modelHeader.textContent = healthTableLang[lang]["modelHeader"];
-        otherHeader.textContent = healthTableLang[lang]["otherHeader"];
-        modelCostUnit.textContent = otherCostUnit.textContent = healthTableLang[lang]["costUnit"];
-
+        modelHeader.textContent = healthTableLang[lang]["table1"]["colHeader"][0];
+        otherHeader.textContent = healthTableLang[lang]["table1"]["colHeader"][2];
+        modelCostUnit.textContent = otherCostUnit.textContent = healthTableLang[lang]["table1"]["colHeader"][1];;
         // model 1
-        model1Text.textContent = healthTableLang[lang]["model1"]["text"];
-        model1Value.value = healthTableLang[lang]["model1"]["value"];
-        
+        model1Text.textContent = healthTableLang[lang]["table1"]["row"][0]["text"];
+        model1Value.value = healthTableLang[lang]["table1"]["row"][0]["value"];
         // fpm
-        fpmText.textContent = healthTableLang[lang]["fpm"]["text"];
-        fpmValue.value = healthTableLang[lang]["fpm"]["value"];
+        fpmText.textContent = healthTableLang[lang]["table1"]["row"][2]["text"];
+        fpmValue.value = healthTableLang[lang]["table1"]["row"][2]["value"];        
         // acm
-        acmText.textContent = healthTableLang[lang]["acm"]["text"];
-        acmValue.value = healthTableLang[lang]["acm"]["value"];
+        acmText.textContent = healthTableLang[lang]["table1"]["row"][3]["text"];
+        acmValue.value = healthTableLang[lang]["table1"]["row"][3]["value"];
+
+
+        // table 2
+        tableName2.innerHTML = healthTableLang[lang]["tableName2"];
+        table2row0col0.innerHTML = healthTableLang[lang]["table2"]["row"][0]["text"];
+        table2row1col0.innerHTML = healthTableLang[lang]["table2"]["row"][1]["text"];
+        table2row2col0.innerHTML = healthTableLang[lang]["table2"]["row"][2]["text"];
+
+        // table 3
+        tableName3.innerHTML = healthTableLang[lang]["tableName3"];
+        table3colHeader0.innerHTML = healthTableLang[lang]["table3"]["colHeader"][0];
+        table3colHeader1.innerHTML = healthTableLang[lang]["table3"]["colHeader"][1];
+        table3colHeader2.innerHTML = healthTableLang[lang]["table3"]["colHeader"][2];
+        table3colHeader3.innerHTML = healthTableLang[lang]["table3"]["colHeader"][3];
+        table3row0col0.innerHTML = healthTableLang[lang]["table3"]["row"][0]["text"];
+        table3row1col0.innerHTML = healthTableLang[lang]["table3"]["row"][1]["text"];
+
       }
 
       // function for calculating disposable mask price
