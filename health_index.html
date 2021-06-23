@@ -99,7 +99,7 @@
                 <td><input id="fpmValue" class="haloCalculation" type="number" value="2"></td>
               </tr>
               <!-- acm: annual cost of maintenance -->
-              <tr>
+              <tr id="acmRow" style="display: none">
                 <td id="acmText">Annual cost of maintenance ($/€/£)</td>
                 <td><input id="acmValue" class="haloCalculation" type="number" value="0"></td>
               </tr>
@@ -402,6 +402,13 @@
           }
         });
 
+        var url = new URL(window.location.href);
+        var showAcm = url.searchParams.get("acm");
+        if (showAcm) {
+        	document.getElementById("acmRow").style.display = "table-row"
+        }
+
+
         // dynamic active navigation bar
         var nav_lang = ["#en", "#fr", "#ge"];
         $(".nav-item").each(function(i) {
@@ -454,8 +461,8 @@
       // function for changing language of a whole site
       function setHealthTableLanguage(lang) {
 
-        
-        tableName1.innerHTML = healthTableLang[lang]["tableName1"];
+        console.log(healthTableLang[lang])
+        tableName1.innerHTML = healthTableLang[lang]["table1"]["tableName"];
         // tableName1.innerHTML = "ASLDKJASLDKJA"
         // site description
         siteDescription.innerHTML = healthTableLang[lang]["siteDescription"];
@@ -476,13 +483,15 @@
 
 
         // table 2
-        tableName2.innerHTML = healthTableLang[lang]["tableName2"];
+        // tableName2.innerHTML = healthTableLang[lang]["tableName2"];
+        tableName2.innerHTML = healthTableLang[lang]["table2"]["tableName"];
         table2row0col0.innerHTML = healthTableLang[lang]["table2"]["row"][0]["text"];
         table2row1col0.innerHTML = healthTableLang[lang]["table2"]["row"][1]["text"];
         table2row2col0.innerHTML = healthTableLang[lang]["table2"]["row"][2]["text"];
 
         // table 3
-        tableName3.innerHTML = healthTableLang[lang]["tableName3"];
+        // tableName3.innerHTML = healthTableLang[lang]["tableName3"];
+        tableName3.innerHTML = healthTableLang[lang]["table3"]["tableName"];
         table3colHeader0.innerHTML = healthTableLang[lang]["table3"]["colHeader"][0];
         table3colHeader1.innerHTML = healthTableLang[lang]["table3"]["colHeader"][1];
         table3colHeader2.innerHTML = healthTableLang[lang]["table3"]["colHeader"][2];
