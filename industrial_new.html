@@ -31,7 +31,7 @@
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
+      <div class="container-fluid mx-4">
         <a class="navbar-brand handel-gothic fs-2" href="#">CleanSpace</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -39,7 +39,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-3">
             <!-- Industrial -->
-            <li class="nav-item">
+            <li class="nav-item mx-3">
               <a class="nav-link active fs-4" aria-current="page" href="#">Industrial</a>
             </li>
 
@@ -54,10 +54,10 @@
                 Languages
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">English</a></li>
-                <li><a class="dropdown-item" href="#">French</a></li>
-                <li><a class="dropdown-item" href="#">German</a></li>
-                <li><a class="dropdown-item" href="#">Spanish</a></li>
+                <li><a class="dropdown-item region-reload" href="#en">English</a></li>
+                <li><a class="dropdown-item region-reload" href="#fr">French</a></li>
+                <li><a class="dropdown-item region-reload" href="#ge">German</a></li>
+                <li><a class="dropdown-item region-reload" href="#sp">Spanish</a></li>
               </ul>
             </li>
           </ul>
@@ -67,140 +67,145 @@
 
     <!-- Section1: CleanSpace Unit -->
     <div class="container mt-4">
-      <h1>Cost Comparison</h1>
-      <p>Online ROI CleanSpace vs Disposable Mask Calculator</p>
+      <h1 id="page-title">Cost Comparison</h1>
+      <p id="description">Online ROI CleanSpace vs Disposable Mask Calculator</p>
 
+      <div class="section1">
+        <!-- 1.1 Table: CleanSpace Unit -->
+        <h2 class="title">CleanSpace System-Industrial</h2>
 
-      <!-- 1.1 Table: CleanSpace Unit -->
-      <h2>CleanSpace System-Industrial</h2>
+        <div class="row ">
+          <!-- left half -->
+          <div class="col-md-6 table1">
+            <table class="table table-dark">
+              <!-- table title -->
+              <thead>
+                <th class="th0" scope="col">Model</th>
+                <th class="th1" scope="col">$ RRP</th>
+              </thead>
+              <!-- table body -->
+              <tbody>
+                <!-- row 1 -->
+                <tr>
+                  <td class="td0">CleanSpace 2 + Half Mask</td>
+                  <td><input id="cs2" class="" type="number" value=617></td>
+                  
+                </tr>
+                <!-- row 2 -->
+                <tr>
+                  <td class="td1">CleanSpace ultra + Full face mask</td>
+                  <td><input id="ultra" class="" type="number" value=1180></td>
+                </tr>
+                <!-- row 3 -->
+                <tr>
+                  <td class="td2">CleanSpace Ex + Half mask</td>
+                  <td><input id="ex" class="" type="number" value=1260></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-      <div class="row">
-        <!-- left half -->
-        <div class="col-md-6">
-          <table class="table table-dark">
-            <!-- table title -->
-            <thead>
-              <th scope="col">Model</th>
-              <th scope="col">$ RRP</th>
-            </thead>
-            <!-- table body -->
-            <tbody>
-              <!-- row 1 -->
-              <tr>
-                <td>CleanSpace 2 + Half Mask</td>
-                <td><input id="cs2" class="" type="number" value=617></td>
+          <!-- right half -->
+          <div class="col-md-6 table2">
+            <table class="table table-dark">
+              <!-- Table title -->
+              <thead>
+                <th class="th0" scope="col">Other</th>
+                <th class="th1" scope="col">$ RRP</th>
+              </thead>
+              <!-- Table body -->
+              <tbody>
+                <!-- row 1 -->
+                <tr>
+                  <td class="td0">Filter particulate</td>
+                  <td><input id="filter1" class="" type="number" value=20></td>
+                </tr>
+        
+                <!-- row 2 -->
+                <tr>
+                  <td class="td1">Filter use per month</td>
+                  <td><input id="filter2" class="" type="number" value=2></td>
+                </tr>
                 
-              </tr>
-              <!-- row 2 -->
-              <tr>
-                <td>CleanSpace ultra + Full face mask</td>
-                <td><input id="ultra" class="" type="number" value=1180></td>
-              </tr>
-              <!-- row 3 -->
-              <tr>
-                <td>CleanSpace Ex + Half mask</td>
-                <td><input id="ex" class="" type="number" value=1260></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <!-- right half -->
-        <div class="col-md-6">
-          <table class="table table-dark">
-            <!-- Table title -->
-            <thead>
-              <th scope="col">Other</th>
-              <th scope="col">$ RRP</th>
-            </thead>
-            <!-- Table body -->
-            <tbody>
-              <!-- row 1 -->
-              <tr>
-                <td>Filter particulate</td>
-                <td><input id="filter1" class="" type="number" value=20></td>
-              </tr>
-      
-              <!-- row 2 -->
-              <tr>
-                <td>Filter use per month</td>
-                <td><input id="filter2" class="" type="number" value=2></td>
-              </tr>
+                <!-- row 3 -->
+                <tr>
+                  <td class="td2">Annual cost of maintenance</td>
+                  <td><input id="filter3" class="" type="number" value=0></td>
+                </tr>
+              </tbody>
               
-              <!-- row 3 -->
-              <tr>
-                <td>Annual cost of maintenance</td>
-                <td><input id="filter3" class="" type="number" value=0></td>
-              </tr>
-            </tbody>
-            
-          </table>
+            </table>
+          </div>
         </div>
       </div>
+      
 
       <!-- Section2: Disposable Mask -->
-      <h2>Disposable Mask</h2>
-      <table class="table table-dark">
-        <tbody>
-          <tr>
-            <td>Number of masks used per month</td>
-            <td><input type="number" id="disposablePerMonth" value=40></td>
-          </tr>
-          <tr>
-            <td>Price per disposable mask</td>
-            <td><input type="number" id="disposablePrice" onchange="calculateDisposable()" value=2></td>
-          </tr>
-          <tr>
-            <td>Cost of disposable masks per month</td>
-            <td><input type="number" id="disposableTotal" readonly="readonly"></td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="section2">
+        <h2 class="title">Disposable Mask</h2>
+        <table class="table table-dark table1">
+          <tbody>
+            <tr>
+              <td class="td0">Number of masks used per month</td>
+              <td><input type="number" id="disposablePerMonth" onchange="calculateDisposableTotal()" value=40></td>
+            </tr>
+            <tr>
+              <td class="td1">Price per disposable mask</td>
+              <td><input type="number" id="disposablePrice" onchange="calculateDisposableTotal()" value=2></td>
+            </tr>
+            <tr>
+              <td class="td2">Cost of disposable masks per month</td>
+              <td><input type="number" id="disposableTotal" readonly="readonly"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
 
       <!-- Calculate Button -->
       <div class="d-grid gap-2 col-3 mx-auto">
-        <button type="button" class="btn btn-dark btn-lg my-4 py-2.5 " onclick="calculateButtonHandler()">Calculate</button>
+        <button id="calculateBtn" type="button" class="btn btn-dark btn-lg my-4 py-2.5 " onclick="calculateButtonHandler()">Calculate</button>
       </div>
 
 
       <!-- Section 3 -->
-      <div class="row">
+      <div class="row section3">
         <div class="col-md-6">
           
           <!-- Section3.1: Saving Table-->
-          <h2>Saving</h2>
-          <table class="table table-dark" width="100%">
+          <h2 class="title">Saving</h2>
+          <table class="table table-dark table1" width="100%">
             <thead>
-              <th>Units</th>
-              <th>Total Cost Over 1 Year</th>
-              <th>Total Cost Over 3 Years</th>
-              <th>%</th>
+              <th class="th0">Units</th>
+              <th class="th1">Total Cost Over 1 Year</th>
+              <th class="th2">Total Cost Over 3 Years</th>
+              <th class="th3">%</th>
             </thead>
 
             <tbody>
               <tr>
-                <td>Disposable Masks</td>
+                <td class="td0">Disposable Masks</td>
                 <td id="disposable_1y">0</td>
                 <td id="disposable_3y">0</td>
                 <td>0</td>
               </tr>
 
               <tr>
-                <td>CleanSpace 2</td>
+                <td class="td1">CleanSpace 2</td>
                 <td id="cs2_1y">0</td>
                 <td id="cs2_3y">0</td>
                 <td id="cs2_percentage">0</td>
               </tr>
 
               <tr>
-                <td>CleanSpace Ultra</td>
+                <td class="td2">CleanSpace Ultra</td>
                 <td id="ultra_1y">0</td>
                 <td id="ultra_3y">0</td>
                 <td id="ultra_percentage">0</td>
               </tr>
 
               <tr>
-                <td>CleanSpace EX</td>
+                <td class="td3">CleanSpace EX</td>
                 <td id="ex_1y">0</td>
                 <td id="ex_3y">0</td>
                 <td id="ex_percentage">0</td>
@@ -252,18 +257,183 @@
             var myChart;
           </script>
         </div>
-        
-      </div>
-
-
-      
+      </div>      
     </div>
 
 
-    
-
 
     <script>
+      // Language Table
+      let langTable = {
+        // English
+        en: {
+          title: "Cost Comparison",
+          description: "Online ROI CleanSpace vs Disposable Mask Calculator",
+          section1: {
+            title: "CleanSpace System-Industrial",
+            table1: {
+              th0: "Model",
+              th1: "$ RRP",
+              td0: "CleanSpace 2 + Half Mask",
+              td1: "CleanSpace ultra + Full face mask",
+              td2: "CleanSpace EX + Half mask",
+            },
+            table2: {
+              th0: "Other",
+              th1: "$ RRP",
+              td0: "Filter particulate",
+              td1: "Filter use per month",
+              td2: "Annual cost of maintenance",
+            }
+          },
+          section2: {
+            title: "Disposable Mask",
+            table1: {
+              td0: "Number of masks used per month",
+              td1: "Price per disposable mask",
+              td2: "Cost of disposable masks per month",
+            },
+          },
+          calculate: "Calculate",
+          section3: {
+            table1: {
+              th0: "Units",
+              th1: "Total Cost Over 1 Year",
+              th2: "Total Cost Over 3 Years",
+              td0: "Disposable Masks",
+              td1: "CleanSpace 2",
+              td2: "CleanSpace Ultra",
+              td3: "CleanSpace EX",
+            },
+          },
+        },
+        // France
+        fr: {
+          title: "Cost Comparison",
+          description: "Online ROI CleanSpace vs Disposable Mask Calculator",
+          section1: {
+            title: "CleanSpace System-Industrial",
+            table1: {
+              th0: "Model",
+              th1: "$ RRP",
+              td0: "CleanSpace 2 + Half Mask",
+              td1: "CleanSpace ultra + Full face mask",
+              td2: "CleanSpace EX + Half mask",
+            },
+            table2: {
+              th0: "Other",
+              th1: "$ RRP",
+              td0: "Filter particulate",
+              td1: "Filter use per month",
+              td2: "Annual cost of maintenance",
+            }
+          },
+          section2: {
+            title: "Disposable Mask",
+            table1: {
+              td0: "Number of masks used per month",
+              td1: "Price per disposable mask",
+              td2: "Cost of disposable masks per month",
+            },
+          },
+          calculate: "Calculate",
+          section3: {
+            table1: {
+              th0: "Units",
+              th1: "Total Cost Over 1 Year",
+              th2: "Total Cost Over 3 Years",
+              td0: "Disposable Masks",
+              td1: "CleanSpace 2",
+              td2: "CleanSpace Ultra",
+              td3: "CleanSpace EX",
+            },
+          },
+        },
+        // Germany
+        ge: {
+          title: "Cost Comparison",
+          description: "Online ROI CleanSpace vs Disposable Mask Calculator",
+          section1: {
+            title: "CleanSpace System-Industrial",
+            table1: {
+              th0: "Model",
+              th1: "$ RRP",
+              td0: "CleanSpace 2 + Half Mask",
+              td1: "CleanSpace ultra + Full face mask",
+              td2: "CleanSpace EX + Half mask",
+            },
+            table2: {
+              th0: "Other",
+              th1: "$ RRP",
+              td0: "Filter particulate",
+              td1: "Filter use per month",
+              td2: "Annual cost of maintenance",
+            }
+          },
+          section2: {
+            title: "Disposable Mask",
+            table1: {
+              td0: "Number of masks used per month",
+              td1: "Price per disposable mask",
+              td2: "Cost of disposable masks per month",
+            },
+          },
+          calculate: "Calculate",
+          section3: {
+            table1: {
+              th0: "Units",
+              th1: "Total Cost Over 1 Year",
+              th2: "Total Cost Over 3 Years",
+              td0: "Disposable Masks",
+              td1: "CleanSpace 2",
+              td2: "CleanSpace Ultra",
+              td3: "CleanSpace EX",
+            },
+          },
+        },
+        // Spain
+        sp: {
+          title: "Cost Comparison",
+          description: "Online ROI CleanSpace vs Disposable Mask Calculator",
+          section1: {
+            title: "CleanSpace System-Industrial",
+            table1: {
+              th0: "Model",
+              th1: "$ RRP",
+              td0: "CleanSpace 2 + Half Mask",
+              td1: "CleanSpace ultra + Full face mask",
+              td2: "CleanSpace EX + Half mask",
+            },
+            table2: {
+              th0: "Other",
+              th1: "$ RRP",
+              td0: "Filter particulate",
+              td1: "Filter use per month",
+              td2: "Annual cost of maintenance",
+            }
+          },
+          section2: {
+            title: "Disposable Mask",
+            table1: {
+              td0: "Number of masks used per month",
+              td1: "Price per disposable mask",
+              td2: "Cost of disposable masks per month",
+            },
+          },
+          calculate: "Calculate",
+          section3: {
+            table1: {
+              th0: "Units",
+              th1: "Total Cost Over 1 Year",
+              th2: "Total Cost Over 3 Years",
+              td0: "Disposable Masks",
+              td1: "CleanSpace 2",
+              td2: "CleanSpace Ultra",
+              td3: "CleanSpace EX",
+            },
+          },
+        },
+      }
 
       // Initialize js.Chart
       function initChart() {
@@ -295,15 +465,15 @@
         });
       }
 
+      // initialise default variables
       function initVariables() {
         calculateDisposableTotal();
       }
 
+      // calculate disposable total cost
       function calculateDisposableTotal() {
         var disposablePerMonth = parseFloat($('#disposablePerMonth').val());
         var disposablePrice = parseFloat($('#disposablePrice').val());
-        // var dispTotal = disposablePrice * disposablePerMonth;
-        // $('#disposableTotal').html(disposablePrice * disposablePerMonth);
         $('#disposableTotal').val(disposablePrice * disposablePerMonth);
       }
 
@@ -353,21 +523,88 @@
 
         $('#disposable_1y').html(y1_disposable);
         $('#disposable_3y').html(y3_disposable);
+
         $('#cs2_1y').html(y1_cs2);
         $('#cs2_3y').html(y3_cs2);
+        $('#cs2_percentage').html(parseInt((y3_cs2-y3_disposable)*100/y3_disposable));
+
         $('#ultra_1y').html(y1_ultra);
         $('#ultra_3y').html(y3_ultra);
+        $('#ultra_percentage').html(parseInt((y3_ultra-y3_disposable)*100/y3_disposable));
+
         $('#ex_1y').html(y1_ex);
         $('#ex_3y').html(y3_ex);
+        $('#ex_percentage').html(parseInt((y3_ex-y3_disposable)*100/y3_disposable));
 
         plotChart(y3_disposable, y3_cs2, y3_ultra, y3_ex);
       }
 
+      function setLanguage(lang) {
+        console.log("set lange", lang)
+        $('#page-title').html(langTable[lang]["title"]);
+        $('#description').html(langTable[lang]["description"]);
+
+        $('.section1 .title').html(langTable[lang]["section1"]["title"]);
+        $('.section1 .table1 .th0').html(langTable[lang]["section1"]["table1"]["th0"]);
+        $('.section1 .table1 .th1').html(langTable[lang]["section1"]["table1"]["th1"]);
+        $('.section1 .table1 .td0').html(langTable[lang]["section1"]["table1"]["td0"]);
+        $('.section1 .table1 .td1').html(langTable[lang]["section1"]["table1"]["td1"]);
+        $('.section1 .table1 .td2').html(langTable[lang]["section1"]["table1"]["td2"]);
+        $('.section1 .table2 .th0').html(langTable[lang]["section1"]["table2"]["th0"]);
+        $('.section1 .table2 .th1').html(langTable[lang]["section1"]["table2"]["th1"]);
+        $('.section1 .table2 .td0').html(langTable[lang]["section1"]["table2"]["td0"]);
+        $('.section1 .table2 .td1').html(langTable[lang]["section1"]["table2"]["td1"]);
+        $('.section1 .table2 .td2').html(langTable[lang]["section1"]["table2"]["td2"]);
+
+        $('.section2 .title').html(langTable[lang]["section2"]["title"]);
+        $('.section2 .table1 .td0').html(langTable[lang]["section2"]["table1"]["td0"]);
+        $('.section2 .table1 .td1').html(langTable[lang]["section2"]["table1"]["td1"]);
+        $('.section2 .table1 .td2').html(langTable[lang]["section2"]["table1"]["td2"]);
+
+        $('#calculateBtn').html(langTable[lang]["calculate"])
+
+        $('.section3 .title').html(langTable[lang]["section3"]["title"]);
+        $('.section3 .table1 .th0').html(langTable[lang]["section3"]["table1"]["th0"]);
+        $('.section3 .table1 .th1').html(langTable[lang]["section3"]["table1"]["th1"]);
+        $('.section3 .table1 .th2').html(langTable[lang]["section3"]["table1"]["th2"]);
+        $('.section3 .table1 .td0').html(langTable[lang]["section3"]["table1"]["td0"]);
+        $('.section3 .table1 .td1').html(langTable[lang]["section3"]["table1"]["td1"]);
+        $('.section3 .table1 .td2').html(langTable[lang]["section3"]["table1"]["td2"]);
+        $('.section3 .table1 .td3').html(langTable[lang]["section3"]["table1"]["td3"]);
+
+      }
+
+      function reloadRegion() {
+        $(".region-reload").click(function () {
+          setTimeout(function () { location.reload(true); }, 50);
+        });
+      }
 
       // Execute when page is rendered
       $(document).ready(function () {
         initChart();
         initVariables();
+        reloadRegion();
+
+        if (window.location.hash) {
+          switch(window.location.hash) {
+            case "#en":
+              setLanguage("en");
+              break;
+            case "#fr":
+              setLanguage("fr");
+              break;
+            case "#ge":
+              setLanguage("ge");
+              break;
+            case "#sp":
+              setLanguage("sp");
+              break;
+          }
+        }
+        
+
+
       });
 
 
