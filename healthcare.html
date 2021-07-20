@@ -3,22 +3,22 @@
   <head>
     <meta charset="UTF-8">
     <title>CleanSpace Halo ROI calculator</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- Popper JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- Latest Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- chart JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-    <!-- Additional styles -->
     <style>
-      * {
-        font-family: 'Raleway', sans-serif;
+      @import url('//db.onlinewebfonts.com/c/a97dc52b4b2059e5f04907cb7492af0b?family=Handel+Gothic');
+
+      .handel-gothic {
+        font-family: 'Handel Gothic';
       }
+
       .center-button {
         text-align: center;
       }
@@ -31,36 +31,44 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-sm navbar-light bg-light">
-      <a class="navbar-brand" href="#">Clean Space</a>
-      <div class="collapse navbar-collapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link region-reload" href="#en">
-              English
-              <span class="sr-only">(current</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link region-reload" href="#fr">
-              French
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link region-reload" href="#ge">
-              German
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link region-reload" href="#sp">
-              Spanish
-            </a>
-          </li>
-        </ul>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+      <div class="container-fluid mx-4">
+        <a class="navbar-brand handel-gothic fs-2" href="#">CleanSpace</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-3">
+            <!-- Industrial -->
+            <li class="nav-item mx-3">
+              <a class="nav-link fs-4" aria-current="page" href="/industrial.html">Industrial</a>
+            </li>
+
+            <!-- Healthcare -->
+            <li class="nav-item mx-3">
+              <a class="nav-link active fs-4" href="/healthcare.html">Healthcare</a>
+            </li>
+
+            <!-- Dropdown -->
+            <li class="nav-item dropdown mx-3">
+              <a class="nav-link dropdown-toggle fs-4" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Languages
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item region-reload" href="#en">English</a></li>
+                <li><a class="dropdown-item region-reload" href="#fr">French</a></li>
+                <li><a class="dropdown-item region-reload" href="#ge">German</a></li>
+                <li><a class="dropdown-item region-reload" href="#sp">Spanish</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
+    
 
-    <div class="container-fluid">
+    <div class="container mt-4">
       <h1>Cost Comparison</h1>
       <p id="siteDescription">Online ROI CleanSpace vs Disposable Mask Calculator</p>
       

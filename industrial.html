@@ -40,12 +40,12 @@
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-3">
             <!-- Industrial -->
             <li class="nav-item mx-3">
-              <a class="nav-link active fs-4" aria-current="page" href="#">Industrial</a>
+              <a class="nav-link active fs-4" aria-current="page" href="/industrial.html">Industrial</a>
             </li>
 
             <!-- Healthcare -->
             <li class="nav-item mx-3">
-              <a class="nav-link fs-4" href="#">Healthcare</a>
+              <a class="nav-link fs-4" href="/healthcare.html">Healthcare</a>
             </li>
 
             <!-- Dropdown -->
@@ -128,10 +128,10 @@
                 </tr>
                 
                 <!-- row 3 -->
-                <tr>
+                <!-- <tr>
                   <td class="td2">Annual cost of maintenance</td>
                   <td><input id="filter3" class="" type="number" value=0></td>
-                </tr>
+                </tr> -->
               </tbody>
               
             </table>
@@ -480,15 +480,17 @@
       function calculateCsUnit1y(rrp) {
         var filterPrice = parseFloat($('#filter1').val());
         var filterNumber = parseFloat($('#filter2').val());
-        var annualCost = parseFloat($('#filter3').val());
-        return rrp + (filterPrice * filterNumber) * 12 + annualCost
+        // var annualCost = parseFloat($('#filter3').val());
+        // return rrp + (filterPrice * filterNumber) * 12 + annualCost
+        return rrp + (filterPrice * filterNumber) * 12
       }
 
       function calculateCsUnit3y(rrp) {
         var filterPrice = parseFloat($('#filter1').val());
         var filterNumber = parseFloat($('#filter2').val());
-        var annualCost = parseFloat($('#filter3').val());
-        return rrp + ((filterPrice * filterNumber) * 12 + annualCost) * 3
+        // var annualCost = parseFloat($('#filter3').val());
+        // return rrp + ((filterPrice * filterNumber) * 12 + annualCost) * 3
+        return rrp + ((filterPrice * filterNumber) * 12) * 3
       }
       
       function calculateDisposable1y(total) {
